@@ -1,0 +1,29 @@
+For an applet this simple, this is all you need to do. Here’s what the applet looks like so far:
+public class HelloAgainApplet extends java.applet.Applet {
+ Font f = new Font(“TimesRoman”,Font.BOLD,36);
+ public void paint(Graphics g) {
+ g.setFont(f);
+ g.setColor(Color.red);
+ g.drawString(“Hello again!”, 5, 50);
+ }
+}
+If you’ve been paying attention, you’ll notice something is wrong with this example up to this
+point. If you don’t know what it is, try saving this file (remember, save it to the same name as
+the class: HelloAgainApplet.java) and compiling it using the Java compiler. You should get a
+bunch of errors similar to this one:
+HelloAgainApplet.java:7: Class Graphics not found in type declaration.
+Why are you getting these errors? Because the classes you’re referring to are part of a package.
+Remember that the only package you have access to automatically is java.lang. You referred to
+the Applet class in the first line of the class definition by referring to its full package name
+(java.applet.Applet). Further on in the program, however, you referred to all kinds of other
+classes as if they were already available.
+There are two ways to solve this problem: refer to all external classes by full package name or
+import the appropriate class or package at the beginning of your class file. Which one you choose
+to do is mostly a matter of choice, although if you find yourself referring to a class in another
+package lots of times, you may want to import it to cut down on the amount of typing.
+In this example, you’ll import the classes you need. There are three of them: Graphics, Font, and
+Color. All three are part of the java.awt package. Here are the lines to import these classes. These
+lines go at the top of your program, before the actual class definition:
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
